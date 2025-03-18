@@ -3,6 +3,7 @@
 const hoursDiv = document.querySelector('#hours');
 const minutesDiv = document.querySelector('#minutes');
 const secondsDiv = document.querySelector('#seconds');
+const issImage = document.querySelector('#iss');
 
 // init functions
 
@@ -12,7 +13,9 @@ function getClock() {
         let hours = currentTime.getHours();
         let minutes = currentTime.getMinutes();
         let seconds = currentTime.getSeconds();
-        
+
+        animClockIss(hours);
+
         hours = checkTime(hours);
         minutes = checkTime(minutes);
         seconds = checkTime(seconds);
@@ -29,6 +32,67 @@ function checkTime(x) {
     return x;
 }
 
+function animClockIss(hours) {
+    switch (hours) {
+        case 0:
+        case 12:
+            issImage.style.top = "0%";
+            break;
+        case 1:
+        case 13:
+            issImage.style.top = "5%";
+            issImage.style.right = "25%";
+            break;
+        case 2:
+        case 14:
+            issImage.style.top = "25%";
+            issImage.style.right = "5%";
+            break;
+        case 3:
+        case 15:
+            issImage.style.right = "0%";
+            break;
+        case 4:
+        case 16:
+            issImage.style.bottom = "25%";
+            issImage.style.right = "5%";
+            break;
+        case 5:
+        case 17:
+            issImage.style.bottom = "5%";
+            issImage.style.right = "25%";
+            break;
+        case 6:
+        case 18:
+            issImage.style.bottom = "0%";
+            break;
+        case 7:
+        case 19:
+            issImage.style.bottom = "5%";
+            issImage.style.left = "25%";
+            break;
+        case 8:
+        case 20:
+            issImage.style.bottom = "25%";
+            issImage.style.left = "5%";
+            break;
+        case 9:
+        case 21:
+            issImage.style.left = "0%";
+            break;
+        case 10:
+        case 22:
+            issImage.style.top = "25%";
+            issImage.style.left = "5%";
+            break;
+        case 11:
+        case 23:
+            issImage.style.top = "5%";
+            issImage.style.left = "25%";
+            break;
+    }
+}
+
 // async function getISSPosition() {
 //     const response =await fetch(url API);
 //     const coordinate = await response.json();
@@ -36,5 +100,4 @@ function checkTime(x) {
 
 
 // execute code
-
 getClock();

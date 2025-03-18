@@ -8,9 +8,9 @@
     min-height: 200px;
     background-position: center;
     flex-direction: column;
-    justify-content: center; /* //centre tt les éléments verticalement */
+    justify-content: center; /* centre tous les éléments verticalement */
     align-items: center; /* aligne les éléments horizontalement */
-    
+    position : relative;
 }
 
 .clock {
@@ -20,13 +20,11 @@
 }
 
 p {
-    color: aliceblue;
+    color: rgb(255, 255, 255);
     margin: 2px;
 }
 
-.iss {
-    position:relative;
+#iss {
     width: 15%;
-    top: 50%; left: 0%;
-    
+    position: absolute;
  }
