@@ -4,6 +4,8 @@ const hoursDiv = document.querySelector('#hours');
 const minutesDiv = document.querySelector('#minutes');
 const secondsDiv = document.querySelector('#seconds');
 const issImage = document.querySelector('#iss');
+const urlAPI = "https://api.wheretheiss.at/v1/satellites/25544";
+
 
 // init functions
 
@@ -15,7 +17,6 @@ function getClock() {
         let seconds = currentTime.getSeconds();
 
         animClockIss(hours);
-
         hours = checkTime(hours);
         minutes = checkTime(minutes);
         seconds = checkTime(seconds);
@@ -36,68 +37,69 @@ function animClockIss(hours) {
     switch (hours) {
         case 0:
         case 12:
-            issImage.style.top = "0%";
+            issImage.style.top = "-5%";
             break;
         case 1:
         case 13:
-            issImage.style.top = "5%";
-            issImage.style.right = "25%";
+            issImage.style.top = "0%";
+            issImage.style.right = "10%";
             break;
         case 2:
         case 14:
-            issImage.style.top = "25%";
-            issImage.style.right = "5%";
+            issImage.style.top = "20%";
+            issImage.style.right = "-10%";
             break;
         case 3:
         case 15:
-            issImage.style.right = "-10%";
+            issImage.style.right = "-20%";
             break;
         case 4:
         case 16:
-            issImage.style.bottom = "25%";
-            issImage.style.right = "5%";
+            issImage.style.bottom = "20%";
+            issImage.style.right = "-10%";
             break;
         case 5:
         case 17:
-            issImage.style.bottom = "5%";
-            issImage.style.right = "25%";
+            issImage.style.bottom = "0%";
+            issImage.style.right = "10%";
             break;
         case 6:
         case 18:
-            issImage.style.bottom = "0%";
+            issImage.style.bottom = "-5%";
             break;
         case 7:
         case 19:
-            issImage.style.bottom = "5%";
-            issImage.style.left = "25%";
+            issImage.style.bottom = "0%";
+            issImage.style.left = "10%";
             break;
         case 8:
         case 20:
-            issImage.style.bottom = "25%";
-            issImage.style.left = "5%";
+            issImage.style.bottom = "20%";
+            issImage.style.left = "-10%";
             break;
         case 9:
         case 21:
-            issImage.style.left = "0%";
+            issImage.style.left = "-20%";
             break;
         case 10:
         case 22:
-            issImage.style.top = "25%";
-            issImage.style.left = "5%";
+            issImage.style.top = "20%";
+            issImage.style.left = "-10%";
             break;
         case 11:
         case 23:
-            issImage.style.top = "5%";
-            issImage.style.left = "25%";
+            issImage.style.top = "0%";
+            issImage.style.left = "10%";
             break;
     }
 }
 
 // async function getISSPosition() {
-//     const response =await fetch(url API);
+//     const response =await fetch(urlAPI);
 //     const coordinate = await response.json();
 // }
 
 
 // execute code
+
 getClock();
