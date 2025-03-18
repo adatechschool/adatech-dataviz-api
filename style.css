@@ -1,7 +1,19 @@
-.clock {
+.bigClock {
+    border: 2px solid black;
     display: flex;
+    background-image: url("./image/TERRE.20.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 14%;
+    min-height: 200px;
+}
+.clock{
+background-color: rgba(0, 0, 0, 0.598);
+margin: auto;
+display: flex;
 }
 
 p {
-    margin: 10px;
+    color: aliceblue;
+    margin: 2px;
 }
