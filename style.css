@@ -1,7 +1,31 @@
-.bigClock {
-    border: 2px solid black;
+@font-face {
+    font-family: "Supreme Spike";
+    src: url(fonts/supremespike-kvo8d.otf);
+}
+
+body {
+    margin: 0;
+    padding : 0;
+}
+
+#nav-bar {
     display: flex;
-    background-image: url("./image/TERRE.20.png");
+    background-color: rgb(204, 215, 228);
+}
+
+h1 {
+    font-family: "Supreme Spike";
+    letter-spacing: 0.5rem;
+    text-align: center;
+    width: 86%;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 30px;
+}
+
+.bigClock {
+    display: flex;
+    background-image: url("./image/TERRE.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 14%;
@@ -11,6 +35,7 @@
     justify-content: center; /* centre tous les éléments verticalement */
     align-items: center; /* aligne les éléments horizontalement */
     position : relative;
+    margin : 15px;
 }
 
 .clock {
@@ -22,6 +47,7 @@
 p {
     color: rgb(255, 255, 255);
     margin: 2px;
+    font-family: Helvetica, sans-serif;
 }
 
 #iss {

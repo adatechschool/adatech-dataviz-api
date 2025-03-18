@@ -50,7 +50,7 @@ function animClockIss(hours) {
             break;
         case 3:
         case 15:
-            issImage.style.right = "0%";
+            issImage.style.right = "-10%";
             break;
         case 4:
         case 16:
