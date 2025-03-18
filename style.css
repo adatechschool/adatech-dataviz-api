@@ -6,14 +6,27 @@
     background-repeat: no-repeat;
     width: 14%;
     min-height: 200px;
+    background-position: center;
+    flex-direction: column;
+    justify-content: center; /* //centre tt les éléments verticalement */
+    align-items: center; /* aligne les éléments horizontalement */
+    
 }
-.clock{
-background-color: rgba(0, 0, 0, 0.598);
-margin: auto;
-display: flex;
+
+.clock {
+    background-color: rgba(0, 0, 0, 0.598);
+    width: fit-content;
+    display: flex; 
 }
 
 p {
     color: aliceblue;
     margin: 2px;
 }
+
+.iss {
+    position:relative;
+    width: 15%;
+    top: 50%; left: 0%;
+    
+ }
