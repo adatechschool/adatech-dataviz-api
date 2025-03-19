@@ -7,6 +7,15 @@ const issImage = document.querySelector('#iss');
 const urlAPI = "https://api.wheretheiss.at/v1/satellites/25544";
 
 
+const world = new Globe(document.querySelector('#globe'))
+.globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+.bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+.backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+
+// Add auto-rotation
+world.controls().autoRotate = true;
+world.controls().autoRotateSpeed = 0.6;
+
 // init functions
 
 function getClock() {
