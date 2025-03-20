@@ -3,14 +3,20 @@
 
 const urlAPI = "https://api.wheretheiss.at/v1/satellites/25544";
 const markerSvg = "<img src='image/iss.svg'></img>";
-export const issData = [{
-    date : new Date(),
+const date = document.querySelector("#Date");
+const altitude = document.querySelector("#Altitude");
+const latitude = document.querySelector("#Latitude");
+const longitude = document.querySelector("#Longitude");
+const speed = document.querySelector("#Speed");
+const visibility = document.querySelector("#Visibility");
+const issData = [{
+    date: new Date().toLocaleDateString("fr"),
     altitude: 0,
     lat: 0,
     lng: 0,
     size: 60,
-    velocity : 0,
-    visibility : "",
+    velocity: 0,
+    visibility: "",
 
 }];
 
@@ -51,9 +57,13 @@ async function getISSPosition() {
         const response = await fetch(urlAPI);
         const data = await response.json();
 
-        issData.lat = data.latitude;
-        issData.lng = data.longitude;
-       // updateISSPosition();
+        issData[0].lat = data.latitude;
+        issData[0].lng = data.longitude;
+        issData[0].altitude = data.altitude;
+        issData[0].velocity = data.velocity;
+        issData[0].visibility = data.visibility;
+        
+        // updateISSPosition();
     }
     catch (error) {
         //affiche le type d'erreur
@@ -66,5 +76,11 @@ async function getISSPosition() {
 getISSPosition();
 let intervalId = setInterval(() => {
     getISSPosition();
-    
+    date.innerText = issData[0].date;
+    altitude.innerText = issData[0].altitude;
+    latitude.innerText = issData[0].lat;
+    longitude.innerText = issData[0].lng;
+    speed.innerText = issData[0].velocity;
+    visibility.innerText = issData[0].visibility;
+
 }, 3000);
