@@ -1,22 +1,25 @@
+
 // init variables
 
 const urlAPI = "https://api.wheretheiss.at/v1/satellites/25544";
 const markerSvg = "<img src='image/iss.svg'></img>";
-const gData = [{
+export const issData = [{
+    date : new Date(),
+    altitude: 0,
     lat: 0,
     lng: 0,
     size: 60,
-    color: 'yellow'
-}];
-let latitude;
-let longitude;
-let altitude;
+    velocity : 0,
+    visibility : "",
 
-const globe = new Globe(document.querySelector('#globe'))
+}];
+
+
+/*const globe = new Globe(document.querySelector('#globe'))
     .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
     .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
     .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
-    .htmlElementsData(gData)
+    .htmlElementsData(issData)
     .htmlElement(d => {
         const el = document.createElement('div');
 
@@ -39,18 +42,18 @@ globe.controls().autoRotateSpeed = 0.3;
 // init functions
 
 function updateISSPosition() {
-    globe.htmlLat(latitude);
-    globe.htmlLng(longitude);
-}
+    globe.htmlLat(issData.lat);
+    globe.htmlLng(issData.lng);
+}*/
 
 async function getISSPosition() {
     try {
         const response = await fetch(urlAPI);
         const data = await response.json();
 
-        latitude = data.latitude;
-        longitude = data.longitude;
-        updateISSPosition();
+        issData.lat = data.latitude;
+        issData.lng = data.longitude;
+       // updateISSPosition();
     }
     catch (error) {
         //affiche le type d'erreur
@@ -63,4 +66,5 @@ async function getISSPosition() {
 getISSPosition();
 let intervalId = setInterval(() => {
     getISSPosition();
+    
 }, 3000);
