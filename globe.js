@@ -11,15 +11,14 @@ const speed = document.querySelector("#Speed");
 const visibility = document.querySelector("#Visibility");
 const issData = [{
     date: new Date().toLocaleDateString("fr"),
-    altitude: 0,
-    lat: 0,
-    lng: 0,
+    altitude: "Chargement...",
+    lat: "Chargement...",
+    lng: "Chargement...",
     size: 60,
-    velocity: 0,
-    visibility: "",
+    velocity: "Chargement...",
+    visibility: "Chargement...",
 
 }];
-
 
 const globe = new Globe(document.querySelector('#globe'))
    .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
@@ -40,7 +39,6 @@ const globe = new Globe(document.querySelector('#globe'))
         return el;
     })
 
-
 // Add auto-rotation
 globe.controls().autoRotate = true;
 globe.controls().autoRotateSpeed = 0.3;
@@ -51,7 +49,6 @@ function updateISSPosition() {
     globe.htmlLat(issData.lat);
     globe.htmlLng(issData.lng);
 }
-
 
 async function getISSPosition() {
     try {
@@ -78,17 +75,31 @@ function dayOrNight(visibility) {
     return "Nuit";
 }
 
-// execute code
-
-getISSPosition();
-let intervalId = setInterval(() => {
-    getISSPosition();
+function showDataUI() {
     date.innerText = issData[0].date;
     altitude.innerText = `${issData[0].altitude} km`;
     latitude.innerText = issData[0].lat;
     longitude.innerText = issData[0].lng;
     speed.innerText = `${issData[0].velocity} km/h`;
     visibility.innerText = dayOrNight(issData[0].visibility);
+}
+
+function initiate() {
+    getISSPosition();
+    date.innerText = issData[0].date;
+    altitude.innerText = issData[0].altitude;
+    latitude.innerText = issData[0].lat;
+    longitude.innerText = issData[0].lng;
+    speed.innerText = issData[0].velocity;
+    visibility.innerText = "Chargement...";
+}
+
+// execute code
+
+initiate();
+let intervalId = setInterval(() => {
+    getISSPosition();
+    showDataUI();
 }, 3000);
 
 
