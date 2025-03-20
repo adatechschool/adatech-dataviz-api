@@ -4,6 +4,11 @@
     src: url(fonts/supremespike-kvo8d.otf);
 }
 
+@font-face {
+    font-family: "B612";
+    src: url(fonts/B612-Regular.ttf);
+}
+
 /* Global */
 body {
     margin: 0;
@@ -59,6 +64,22 @@ p {
     margin: 2px;
     color: rgb(255, 255, 255);
     font-family: Helvetica, sans-serif;
+}
+
+#container-dashboard{
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        grid-gap: 20px;
+}
+
+#dashboard{
+border: double rgb(102, 255, 0) 3px;
+border-radius: 10px;
+font-family: "B612";
+color: rgb(102, 255, 0);
+background-color: black;
+padding: 20px;
+
 }
 
 /* Globe display */

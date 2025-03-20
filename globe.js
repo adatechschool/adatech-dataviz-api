@@ -21,10 +21,10 @@ const issData = [{
 }];
 
 
-/*const globe = new Globe(document.querySelector('#globe'))
-    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-    .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
-    .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+const globe = new Globe(document.querySelector('#globe'))
+   .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
+    .bumpImageUrl('//https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png')
+    .backgroundImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png')
     .htmlElementsData(issData)
     .htmlElement(d => {
         const el = document.createElement('div');
@@ -50,20 +50,20 @@ globe.controls().autoRotateSpeed = 0.3;
 function updateISSPosition() {
     globe.htmlLat(issData.lat);
     globe.htmlLng(issData.lng);
-}*/
+}
+
 
 async function getISSPosition() {
     try {
         const response = await fetch(urlAPI);
         const data = await response.json();
 
-        issData[0].lat = data.latitude;
-        issData[0].lng = data.longitude;
-        issData[0].altitude = data.altitude;
-        issData[0].velocity = data.velocity;
+        issData[0].lat = data.latitude.toFixed(3);
+        issData[0].lng = data.longitude.toFixed(3);
+        issData[0].altitude = data.altitude.toFixed(0);
+        issData[0].velocity = data.velocity.toFixed(0);
         issData[0].visibility = data.visibility;
-        
-        // updateISSPosition();
+        updateISSPosition();
     }
     catch (error) {
         //affiche le type d'erreur
@@ -71,16 +71,24 @@ async function getISSPosition() {
     }
 }
 
+function dayOrNight(visibility) {
+    if (visibility === "daylight") {
+        return "Jour";
+    }
+    return "Nuit";
+}
 
 // execute code
+
 getISSPosition();
 let intervalId = setInterval(() => {
     getISSPosition();
     date.innerText = issData[0].date;
-    altitude.innerText = issData[0].altitude;
+    altitude.innerText = `${issData[0].altitude} km`;
     latitude.innerText = issData[0].lat;
     longitude.innerText = issData[0].lng;
-    speed.innerText = issData[0].velocity;
-    visibility.innerText = issData[0].visibility;
-
+    speed.innerText = `${issData[0].velocity} km/h`;
+    visibility.innerText = dayOrNight(issData[0].visibility);
 }, 3000);
+
+
