@@ -66,21 +66,22 @@ p {
     font-family: Helvetica, sans-serif;
 }
 
-#container-dashboard{
-        display: grid;
-        grid-template-columns: 1fr 4fr;
-        grid-gap: 20px;
+#globe {
+    position: relative;
 }
 
-#dashboard{
-border: double rgb(102, 255, 0) 3px;
-border-radius: 10px;
-font-family: "B612";
-color: rgb(102, 255, 0);
-background-color: black;
-padding: 20px;
+#globe canvas {
+    position: absolute;
+}
 
+#dashboard {
+    width : 20%;
+    border: double rgb(102, 255, 0) 3px;
+    border-radius: 10px;
+    font-family: "B612";
+    color: rgb(102, 255, 0);
+    padding: 20px;
+    position: absolute;
 }
 
 /* Globe display */
-
