@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Où est l'ISS ?</title>
     <link rel="stylesheet" href="./style.css">
-    <script defer src="./clock.js" ></script>
+    <script defer src="./clock.js"></script>
     <script defer src="./globe.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
-    
+
 
 </head>
 
@@ -27,21 +27,22 @@
         </div>
         <h1>Où est l'ISS ?</h1>
     </nav>
-    <div id="globe">
+    <div id="windows">
+        <div id="globe"></div>
         <div id="dashboard">
-            <label for="Date">Date :</label> 
-            <div id="Date"></div>
+            <label for="Date">Date :</label>
+            <div id="Date" class="data"></div>
             <label for="Altitude">Altitude :</label>
-            <div id="Altitude"></div>
+            <div id="Altitude" class="data"></div>
             <label for="Latitude">Latitude :</label>
-            <div id="Latitude"></div>
+            <div id="Latitude" class="data"></div>
             <label for="Longitude">Longitude :</label>
-            <div id="Longitude"></div>
+            <div id="Longitude" class="data"></div>
             <label for="Speed">Vitesse :</label>
-            <div id="Speed"></div>
+            <div id="Speed" class="data"></div>
             <label for="Visibility">Visibilité :</label>
             <div id="Visibility"></div>
-         </div>
+        </div>
     </div>
 
 </body>
