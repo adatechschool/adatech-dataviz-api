@@ -1,12 +1,14 @@
 
 // init variables
 
-const urlAPI = "https://api.wheretheiss.at/v1/satellites/25544";
+const urlAPIIss = "https://api.wheretheiss.at/v1/satellites/25544";
+const urlAPINominatim = "https://nominatim.openstreetmap.org"
 const markerSvg = "<img src='image/iss.svg'></img>";
 const date = document.querySelector("#Date");
 const altitude = document.querySelector("#Altitude");
 const latitude = document.querySelector("#Latitude");
 const longitude = document.querySelector("#Longitude");
+const country = document.querySelector("#Country");
 const speed = document.querySelector("#Speed");
 const visibility = document.querySelector("#Visibility");
 const issData = [{
@@ -21,15 +23,14 @@ const issData = [{
 }];
 
 const globe = new Globe(document.querySelector('#globe'))
-   .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
-    .bumpImageUrl('//https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png')
+    .globeImageUrl('https://clouds.matteason.co.uk/images/8192x4096/earth.jpg')
+    .bumpImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png')
     .backgroundImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png')
     .htmlElementsData(issData)
     .htmlElement(d => {
         const el = document.createElement('div');
 
         el.innerHTML = markerSvg;
-        el.style.color = d.color;
         el.style.width = `${d.size}px`;
         el.style.transition = 'opacity 250ms';
 
@@ -52,7 +53,7 @@ function updateISSPosition() {
 
 async function getISSPosition() {
     try {
-        const response = await fetch(urlAPI);
+        const response = await fetch(urlAPIIss);
         const data = await response.json();
 
         issData[0].lat = data.latitude.toFixed(3);
@@ -64,6 +65,20 @@ async function getISSPosition() {
     }
     catch (error) {
         //affiche le type d'erreur
+        console.error(error)
+    }
+}
+
+async function getCountryName() {
+    try {
+        const response = await fetch(urlAPINominatim + `reverse?lat=${issData.lat}&lon=${issData.lng}&zoom=3`);
+        const country = await response.jscon();
+        if (country === "Unable to geocode") {
+            return "Unable to geocode";
+        }
+        console.log(country);
+        return JSON.stringify(country);
+    } catch (error) {
         console.error(error)
     }
 }
@@ -80,6 +95,7 @@ function showDataUI() {
     altitude.innerText = `${issData[0].altitude} km`;
     latitude.innerText = issData[0].lat;
     longitude.innerText = issData[0].lng;
+    country.innerText = getCountryName();
     speed.innerText = `${issData[0].velocity} km/h`;
     visibility.innerText = dayOrNight(issData[0].visibility);
 }
