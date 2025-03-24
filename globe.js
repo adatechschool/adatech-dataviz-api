@@ -16,6 +16,7 @@ const issData = [{
     altitude: "Chargement...",
     lat: "Chargement...",
     lng: "Chargement...",
+    country: "Chargement...",
     size: 60,
     velocity: "Chargement...",
     visibility: "Chargement...",
@@ -62,6 +63,7 @@ async function getISSPosition() {
         issData[0].velocity = data.velocity.toFixed(0);
         issData[0].visibility = data.visibility;
         updateISSPosition();
+        getCountryName();
     }
     catch (error) {
         //affiche le type d'erreur
@@ -71,15 +73,15 @@ async function getISSPosition() {
 
 async function getCountryName() {
     try {
-        const response = await fetch(urlAPINominatim + `reverse?lat=${issData.lat}&lon=${issData.lng}&zoom=3`);
-        const country = await response.jscon();
-        if (country === "Unable to geocode") {
-            return "Unable to geocode";
-        }
-        console.log(country);
-        return JSON.stringify(country);
-    } catch (error) {
-        console.error(error)
+        const response = await fetch(`${urlAPINominatim}/reverse?format=json&lat=${issData[0].lat}&lon=${issData[0].lng}`);
+        const data = await response.json();
+        // if (country === "Unable to geocode") {
+        //     return "Unable to geocode";
+        // }
+        issData[0].country = data.address.country;
+    }
+    catch (error) {
+        console.error(error);
     }
 }
 
@@ -95,7 +97,7 @@ function showDataUI() {
     altitude.innerText = `${issData[0].altitude} km`;
     latitude.innerText = issData[0].lat;
     longitude.innerText = issData[0].lng;
-    country.innerText = getCountryName();
+    country.innerText = issData[0].country;
     speed.innerText = `${issData[0].velocity} km/h`;
     visibility.innerText = dayOrNight(issData[0].visibility);
 }
