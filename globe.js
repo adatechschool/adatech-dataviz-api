@@ -1,25 +1,24 @@
-
 // init variables
 
 const urlAPIIss = "https://api.wheretheiss.at/v1/satellites/25544";
 const urlAPINominatim = "https://nominatim.openstreetmap.org"
 const markerSvg = "<img src='image/iss.svg'></img>";
 const date = document.querySelector("#Date");
-const altitude = document.querySelector("#Altitude");
 const latitude = document.querySelector("#Latitude");
 const longitude = document.querySelector("#Longitude");
 const country = document.querySelector("#Country");
+const altitude = document.querySelector("#Altitude");
 const speed = document.querySelector("#Speed");
 const visibility = document.querySelector("#Visibility");
 const issData = [{
     date: new Date().toLocaleDateString("fr"),
-    altitude: "Chargement...",
     lat: "Chargement...",
     lng: "Chargement...",
     country: "Chargement...",
-    size: 60,
+    altitude: "Chargement...",
     velocity: "Chargement...",
     visibility: "Chargement...",
+    size: 60,
 }];
 
 const globe = new Globe(document.querySelector('#globe'))
@@ -35,9 +34,9 @@ const globe = new Globe(document.querySelector('#globe'))
         el.style.transition = 'opacity 250ms';
         return el;
     })
-    // Add auto-rotation
-    globe.controls().autoRotate = true;
-    globe.controls().autoRotateSpeed = 0.3;
+// Add auto-rotation
+globe.controls().autoRotate = true;
+globe.controls().autoRotateSpeed = 0.3;
 
 
 // init functions
@@ -87,10 +86,10 @@ function dayOrNight(visibility) {
 
 function showDataUI() {
     date.innerText = issData[0].date;
-    altitude.innerText = `${issData[0].altitude} km`;
     latitude.innerText = issData[0].lat;
     longitude.innerText = issData[0].lng;
     country.innerText = issData[0].country;
+    altitude.innerText = `${issData[0].altitude} km`;
     speed.innerText = `${issData[0].velocity} km/h`;
     visibility.innerText = dayOrNight(issData[0].visibility);
 }
@@ -98,24 +97,19 @@ function showDataUI() {
 function initiate() {
     getISSPosition();
     date.innerText = issData[0].date;
-    altitude.innerText = issData[0].altitude;
     latitude.innerText = issData[0].lat;
     longitude.innerText = issData[0].lng;
     country.innerText = issData[0].country;
+    altitude.innerText = issData[0].altitude;
     speed.innerText = issData[0].velocity;
-    visibility.innerText = "Chargement...";
+    visibility.innerText = issData[0].visibility;
 }
 
 
-
-
 // execute code
-
 
 initiate();
 let intervalId = setInterval(() => {
     getISSPosition();
     showDataUI();
 }, 3000);
-
-
