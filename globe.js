@@ -75,12 +75,12 @@ async function getCountryName() {
     try {
         const response = await fetch(`${urlAPINominatim}/reverse?format=json&lat=${issData[0].lat}&lon=${issData[0].lng}`);
         const data = await response.json();
-        // if (country === "Unable to geocode") {
-        //     return "Unable to geocode";
-        // }
+
+        console.log(data);
         issData[0].country = data.address.country;
     }
     catch (error) {
+        issData[0].country = "Océan";
         console.error(error);
     }
 }
@@ -108,6 +108,7 @@ function initiate() {
     altitude.innerText = issData[0].altitude;
     latitude.innerText = issData[0].lat;
     longitude.innerText = issData[0].lng;
+    country.innerText = issData[0].country;
     speed.innerText = issData[0].velocity;
     visibility.innerText = "Chargement...";
 }
@@ -117,6 +118,7 @@ function initiate() {
 initiate();
 let intervalId = setInterval(() => {
     getISSPosition();
+
     showDataUI();
 }, 3000);
 
