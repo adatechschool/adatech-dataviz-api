@@ -20,7 +20,6 @@ const issData = [{
     size: 60,
     velocity: "Chargement...",
     visibility: "Chargement...",
-
 }];
 
 const globe = new Globe(document.querySelector('#globe'))
@@ -34,16 +33,12 @@ const globe = new Globe(document.querySelector('#globe'))
         el.innerHTML = markerSvg;
         el.style.width = `${d.size}px`;
         el.style.transition = 'opacity 250ms';
-
-        el.style['pointer-events'] = 'auto';
-        el.style.cursor = 'pointer';
-        el.onclick = () => console.info(d);
         return el;
     })
+    // Add auto-rotation
+    globe.controls().autoRotate = true;
+    globe.controls().autoRotateSpeed = 0.3;
 
-// Add auto-rotation
-globe.controls().autoRotate = true;
-globe.controls().autoRotateSpeed = 0.3;
 
 // init functions
 
@@ -66,7 +61,6 @@ async function getISSPosition() {
         getCountryName();
     }
     catch (error) {
-        //affiche le type d'erreur
         console.error(error)
     }
 }
@@ -76,7 +70,6 @@ async function getCountryName() {
         const response = await fetch(`${urlAPINominatim}/reverse?format=json&lat=${issData[0].lat}&lon=${issData[0].lng}`);
         const data = await response.json();
 
-        console.log(data);
         issData[0].country = data.address.country;
     }
     catch (error) {
@@ -118,7 +111,6 @@ function initiate() {
 initiate();
 let intervalId = setInterval(() => {
     getISSPosition();
-
     showDataUI();
 }, 3000);
 
