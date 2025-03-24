@@ -69,10 +69,14 @@ async function getCountryName() {
         const response = await fetch(`${urlAPINominatim}/reverse?format=json&lat=${issData[0].lat}&lon=${issData[0].lng}`);
         const data = await response.json();
 
-        issData[0].country = data.address.country;
+        if (data.error) {
+            issData[0].country = "Océan";
+        }
+        else {
+            issData[0].country = data.address.country;
+        }
     }
     catch (error) {
-        issData[0].country = "Océan";
         console.error(error);
     }
 }
