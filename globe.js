@@ -23,7 +23,7 @@ const issData = [{
 }];
 
 const globe = new Globe(document.querySelector('#globe'))
-    .globeImageUrl('https://clouds.matteason.co.uk/images/8192x4096/earth.jpg')
+    .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
     .bumpImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png')
     .backgroundImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png')
     .htmlElementsData(issData)
@@ -106,7 +106,11 @@ function initiate() {
     visibility.innerText = "Chargement...";
 }
 
+
+
+
 // execute code
+
 
 initiate();
 let intervalId = setInterval(() => {
