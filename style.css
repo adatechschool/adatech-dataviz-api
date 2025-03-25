@@ -43,7 +43,8 @@ h1 {
     height: 8em;
     margin: 15px;
     margin-left: 30px;
-    background-image: url("./image/TERRE.png");
+    background-image: url("./image/icone_terre.png");
+    filter: drop-shadow(0 0 0.75rem rgba(102, 255, 0, 0.5));
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -70,7 +71,7 @@ h1 {
 p {
     margin: 2px;
     color: rgb(255, 255, 255);
-    font-family: Helvetica, sans-serif;
+    font-family: "B612";
 }
  
 
