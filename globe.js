@@ -1,7 +1,7 @@
 // init variables
 
 const urlAPIIss = "https://api.wheretheiss.at/v1/satellites/25544";
-const urlAPINominatim = "https://nominatim.openstreetmap.org"
+const urlAPINominatim = "https://nominatim.openstreetmap.org";
 const markerSvg = "<img src='image/iss.svg'></img>";
 const date = document.querySelector("#Date");
 const latitude = document.querySelector("#Latitude");
@@ -18,17 +18,16 @@ const issData = [{
     altitude: "Chargement...",
     velocity: "Chargement...",
     visibility: "Chargement...",
-    size: 60,
 }];
 const globe = new Globe(document.querySelector('#globe'))
     .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
     .bumpImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png')
     .backgroundImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png')
     .htmlElementsData(issData)
-    .htmlElement(d => {
+    .htmlElement( () => {
         const element = document.createElement('div');
         element.innerHTML = markerSvg;
-        element.style.width = `${d.size}px`;
+        element.style.width = "60px";
         return element;
     })
 globe.controls().autoRotate = true;
