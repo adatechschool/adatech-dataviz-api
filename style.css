@@ -34,8 +34,14 @@ h1 {
     background-color: rgba(0, 0, 0, 0.416);
     position: absolute;
     top: 5%;
-    left: 40%;
+    left: 37%;
+    width: fit-content;
 }
+
+#globe {
+    overflow: hidden;
+}
+
 
 .bigClock {
     display: flex;
@@ -54,7 +60,7 @@ h1 {
     /* aligne les éléments horizontalement */
     align-items: center;
     position: absolute;
-    top: 2%; right: 3%;
+    top: 5%; right: 3%;
 }
 
 #iss {
@@ -88,9 +94,7 @@ p {
     margin: 5em;
     padding: 2em;
     position: absolute;
-    top: 10%;
+    top: 4%;
     left: 0%;
-    box-shadow: 1px 2px 20px 1px rgba(102, 255, 0, 0.5)
+    box-shadow: 1px 2px 20px 1px rgba(102, 255, 0, 0.5);
 }
-
-/* Globe display */
