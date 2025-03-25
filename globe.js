@@ -20,21 +20,17 @@ const issData = [{
     visibility: "Chargement...",
     size: 60,
 }];
-
 const globe = new Globe(document.querySelector('#globe'))
     .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg')
     .bumpImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png')
     .backgroundImageUrl('https://cdn.jsdelivr.net/npm/three-globe/example/img/night-sky.png')
     .htmlElementsData(issData)
     .htmlElement(d => {
-        const el = document.createElement('div');
-
-        el.innerHTML = markerSvg;
-        el.style.width = `${d.size}px`;
-        el.style.transition = 'opacity 250ms';
-        return el;
+        const element = document.createElement('div');
+        element.innerHTML = markerSvg;
+        element.style.width = `${d.size}px`;
+        return element;
     })
-// Add auto-rotation
 globe.controls().autoRotate = true;
 globe.controls().autoRotateSpeed = 0.3;
 
@@ -60,7 +56,7 @@ async function getISSPosition() {
         getCountryName();
     }
     catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
