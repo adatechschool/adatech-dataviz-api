@@ -15,14 +15,13 @@ body {
     padding: 0;
 }
 
-/* Nav Bar */
-.nav-bar {
-    display: flex;
-    position: absolute;
-    top: 0; left: 30%;
+/* Windows */
+#windows {
+    position: relative;
 }
 
 h1 {
+    display: flex;
     font-family: "Supreme Spike";
     letter-spacing: 0.5rem;
     text-align: center;
@@ -33,7 +32,16 @@ h1 {
     color: rgb(81, 255, 0);
     text-shadow: 2px 4px 20px;
     background-color: rgba(0, 0, 0, 0.416);
+    position: absolute;
+    top: 5%;
+    left: 37%;
+    width: fit-content;
 }
+
+#globe {
+    overflow: hidden;
+}
+
 
 .bigClock {
     display: flex;
@@ -41,7 +49,8 @@ h1 {
     height: 8em;
     margin: 15px;
     margin-left: 30px;
-    background-image: url("./image/TERRE.png");
+    background-image: url("./image/icone_terre.png");
+    filter: drop-shadow(0 0 0.75rem rgba(102, 255, 0, 0.5));
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -50,7 +59,8 @@ h1 {
     justify-content: center;
     /* aligne les éléments horizontalement */
     align-items: center;
-    position: relative;
+    position: absolute;
+    top: 5%; right: 3%;
 }
 
 #iss {
@@ -67,12 +77,9 @@ h1 {
 p {
     margin: 2px;
     color: rgb(255, 255, 255);
-    font-family: Helvetica, sans-serif;
+    font-family: "B612";
 }
  
-#windows {
-    position: relative;
-}
 
 .data {
     margin-bottom: 1em;
@@ -87,9 +94,7 @@ p {
     margin: 5em;
     padding: 2em;
     position: absolute;
-    top: 10%;
+    top: 4%;
     left: 0%;
-    box-shadow: 1px 2px 20px 1px rgba(102, 255, 0, 0.5)
+    box-shadow: 1px 2px 20px 1px rgba(102, 255, 0, 0.5);
 }
-
-/* Globe display */
